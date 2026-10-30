@@ -90,7 +90,8 @@ if [[ "$ACTION" == "up" ]]; then
         sed -i '/^\[Interface\]/a Table = off' "$CONFIG_FILE"
     fi
 fi
-exec /usr/local/bin/awg-quick "$ACTION" "$CONFIG"
+AWG_QUICK="$(command -v awg-quick)"
+exec "$AWG_QUICK" "$ACTION" "$CONFIG"
 WRAPPER_EOF
 chmod +x /usr/local/bin/awg-quick-wrapper
 
