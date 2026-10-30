@@ -407,6 +407,8 @@ net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/awg.conf
 
 	systemctl start "awg-quick@${SERVER_AWG_NIC}"
 	systemctl enable "awg-quick@${SERVER_AWG_NIC}"
+	systemctl start "amneziawg-routing@${SERVER_AWG_NIC}" || true
+	systemctl enable "amneziawg-routing@${SERVER_AWG_NIC}" || true
 
 	newClient
 	echo -e "${GREEN}If you want to add more clients, you simply need to run this script another time!${NC}"
